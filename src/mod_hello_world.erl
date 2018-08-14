@@ -23,8 +23,8 @@ stop (_Host) ->
 create_message({Action,Packet}) ->
 	MessageId = element(1,Packet),
 	Type = xml:get_tag_attr_s(list_to_binary("type"), Packet),
-  From = element(5,Packet),
-	To = element(6,Packet),
+  _From = element(5,Packet),
+	_To = element(6,Packet),
 	FromS = _From#jid.luser,
 	ToS = _To#jid.luser,
 	Body = "test",
