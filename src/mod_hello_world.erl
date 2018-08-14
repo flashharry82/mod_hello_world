@@ -1,5 +1,5 @@
 %% name of module must match file name
--module(mod_http_offline).
+-module(mod_hello_world).
 -author("Rael Max").
 
 -behaviour(gen_mod).
