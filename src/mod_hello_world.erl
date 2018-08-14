@@ -28,10 +28,10 @@ create_message(_From, _To, Packet) ->
 	Body = xml:get_path_s(Packet, [{elem, list_to_binary("body")}, cdata]),
 
 	if (Type == <<"chat">>) and (Body /= <<"">>) ->
-		post_offline_message(FromS, ToS, Body, SubType, MessageId)
+		post_offline_message(FromS, ToS, Body, MessageId)
 	end.
 
-post_offline_message(From, To, Body, SubType, MessageId) ->
+post_offline_message(From, To, Body, MessageId) ->
 	?INFO_MSG("Posting From ~p To ~p Body ~p SubType ~p ID ~p~n",[From, To, Body, SubType, MessageId]),
 	Sep = "&",
 	Post = [
