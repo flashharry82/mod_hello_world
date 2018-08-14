@@ -32,7 +32,7 @@ create_message(_From, _To, Packet) ->
 	end.
 
 post_offline_message(From, To, Body, MessageId) ->
-	?INFO_MSG("Posting From ~p To ~p Body ~p ID ~p~n",[From, To, Body, SubType, MessageId]),
+	?INFO_MSG("Posting From ~p To ~p Body ~p ID ~p~n",[From, To, Body, MessageId]),
 	Sep = "&",
 	Post = [
 		"from=", From, Sep,
