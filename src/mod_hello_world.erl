@@ -20,12 +20,14 @@ stop (_Host) ->
 	?INFO_MSG("stopping mod_http_offline", []),
 	ejabberd_hooks:delete(offline_message_hook, _Host, ?MODULE, create_message, 50).
 
-create_message(_From, _To, Packet) ->
-	MessageId = xml:get_tag_attr_s(list_to_binary("id"), Packet),
+create_message({Action,Packet}) ->
+	MessageId = element(1,Packet),
 	Type = xml:get_tag_attr_s(list_to_binary("type"), Packet),
+  From = element(5,Packet),
+	To = element(6,Packet),
 	FromS = _From#jid.luser,
 	ToS = _To#jid.luser,
-	Body = xml:get_path_s(Packet, [{elem, list_to_binary("body")}, cdata]),
+	Body = "test",
 
 	if (Type == <<"chat">>) and (Body /= <<"">>) ->
 		post_offline_message(FromS, ToS, Body, MessageId)
